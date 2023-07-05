@@ -1,0 +1,129 @@
+/* google fonts */
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap');
+
+:root {
+  --primary-color: #ff6b8b;
+  --secondary-color: #f78fb3;
+}
+
+body {
+  background-color: #f8f0f4;
+  display: flex;
+  justify-content: center; /* Center the content horizontally */
+  align-items: center; /* Center the content vertically */
+  height: 100vh; /* Set the body height to full viewport height */
+}
+
+.container {
+  max-width: 800px;
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-wrap: wrap; /* Allow the content to wrap on smaller screens */
+  overflow: hidden;
+}
+
+.container .left-box {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.container .right-box {
+  flex: 1;
+  padding: 30px;
+}
+
+.right-box h2 {
+  text-align: center;
+  margin-bottom: 30px;
+  color: var(--primary-color);
+  font-size: 24px;
+}
+
+.form-group label {
+  font-weight: bold;
+  color: var(--secondary-color);
+}
+
+.form-group span {
+  font-weight: lighter;
+  color: var(--secondary-color);
+}
+
+.form-group input[type="email"],
+.form-group input[type="password"] {
+  width: 100%;
+  padding: 10px;
+  border-radius: 5px;
+  border: 1px solid var(--secondary-color);
+}
+
+.form-group input[type="email"]::placeholder,
+.form-group input[type="password"]::placeholder {
+  font-size: 16px;
+  color: var(--secondary-color);
+}
+
+.form-group button {
+  width: 100%;
+  padding: 10px;
+  margin-top: 20px;
+  border-radius: 5px;
+  border: none;
+  background-color: var(--primary-color);
+  color: #fff;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  font-size: 16px;
+}
+
+.form-group button:hover {
+  background-color: #ff4078;
+}
+
+.form-group .forgot-password {
+  text-align: right;
+  margin-top: 10px;
+}
+
+.form-group .forgot-password a {
+  color: var(--secondary-color);
+  text-decoration: none;
+}
+
+.form-group .register-link {
+  text-align: center;
+  margin-top: 20px;
+  font-size: 14px;
+}
+
+.form-group .register-link a {
+  color: var(--secondary-color);
+  text-decoration: none;
+  font-weight: bold;
+}
+
+/* Responsive Styles */
+@media (max-width: 767px){
+  .container{
+    flex-basis: 100%; /* Expand to full width */
+    margin-top: 50px;
+    border-radius: 0;
+  }
+
+  .container .left-box{
+    display: none;
+  }
+
+  .container .right-box{
+    flex: 1;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+}
