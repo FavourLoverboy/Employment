@@ -29,7 +29,7 @@
                     $status = $secObj->encryptURLParam('1');
 
                     $tblquery = "INSERT INTO referral VALUES(:id, :name, :email, :password, :code, :img, :date, :status)";
-                    $tblvalue = array(
+                    $tblvalue = [
                         ':id' => NULL, 
                         ':name' => htmlspecialchars($enc_name),
                         ':email' => htmlspecialchars($enc_email), 
@@ -38,7 +38,7 @@
                         ':img' => htmlspecialchars(""),
                         ':date' => htmlspecialchars($date),
                         ':status' => htmlspecialchars($status)
-                    );
+                    ];
                     $insert = $dbObj->tbl_insert($tblquery, $tblvalue);
                     if($insert){
                         $e = $n = $errEmail = '';
