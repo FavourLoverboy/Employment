@@ -38,6 +38,7 @@
                             ':email' => htmlspecialchars($secObj->encryptURLParam($email))
                         ];
                         $select = $dbObj->tbl_select($tblquery, $tblvalue);
+                        // print_r($select);
                         if(!$select){
                             if(!(strlen($password) < 6)){
                                 if($password == $cp){
@@ -98,8 +99,12 @@
                 <input type="password" id="cp" name="cp" placeholder="confirm password" value="<?php echo $cp; ?>" required>
                 <span class="error"><?php echo $errCP; ?></span>
             </div>
-            <button type="submit">Register</button>
+            <button type="submit">Proceed</button>
         </form>
+        <div class="button-group">
+            <a href="login" class="login-link">Login?</a>
+            <a href="forgotPassword" class="forgot-password-link">Forgot Password?</a>
+        </div>
     </div>
 
 <?php include('includes/auth/footer.php'); ?>

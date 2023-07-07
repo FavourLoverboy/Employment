@@ -96,8 +96,12 @@
                 <label for="ads">Home Address</label>
                 <textarea id="ads" name="ads" rows="4" placeholder="enter address"><?php echo $ads; ?></textarea>
             </div>
-            <button type="submit">Register</button>
+            <button type="submit">Proceed</button>
         </form>
+        <div class="button-group">
+            <a href="login" class="login-link">Login?</a>
+            <a href="forgotPassword" class="forgot-password-link">Forgot Password?</a>
+        </div>
     </div>
 
 <?php include('includes/auth/footer.php'); ?>

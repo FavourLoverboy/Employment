@@ -5,7 +5,81 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Registration Page</title>
   <style>
-    
+      body {
+          box-sizing: border-box;
+          font-family: Arial, sans-serif;
+          background-color: #f2f2f2;
+          margin: 0;
+          padding: 0;
+      }
+
+      .container {
+          width: 400px;
+          margin: 50px auto;
+          padding: 20px;
+          background-color: #fff;
+          border-radius: 5px;
+          box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      }
+
+      span.error{
+          color: rgb(241, 139, 139);
+          font-size: 12px;
+      }
+      h1 {
+          text-align: center;
+      }
+
+      .form-group {
+          margin-bottom: 20px;
+      }
+
+      label {
+          display: block;
+          font-weight: bold;
+          margin-bottom: 5px;
+      }
+
+      input[type="text"],
+      input[type="email"],
+      input[type="password"],
+      input[type="number"],
+      input[type="date"],
+      select, textarea{
+          width: 99%;
+          padding: 10px;
+          font-size: 16px;
+          border-radius: 3px;
+          border: 1px solid #ccc;
+      }
+
+      button[type="submit"] {
+          display: block;
+          width: 99%;
+          padding: 10px;
+          font-size: 16px;
+          font-weight: bold;
+          color: #fff;
+          background-color: #007bff;
+          border: none;
+          border-radius: 3px;
+          cursor: pointer;
+      }
+
+      button[type="submit"]:hover {
+          background-color: #0069d9;
+      }
+      .button-group {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: 10px;
+    }
+
+    .login-link,
+    .forgot-password-link {
+      text-align: center;
+    }
   </style>
 </head>
 <body>
@@ -26,6 +100,10 @@
       </div>
       <button type="submit">Register</button>
     </form>
+    <div class="button-group">
+        <a href="#" class="login-link">Login</a>
+        <a href="#" class="forgot-password-link">Forgot Password?</a>
+  </div>
   </div>
 </body>
 </html>

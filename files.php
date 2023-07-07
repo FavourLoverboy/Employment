@@ -9,7 +9,8 @@
 
     $errImg = '';
     $continue = true;
-    if(isset($_POST)){
+    if(isset($_POST['image'])){
+        echo 'here now';
         if(!empty($_FILES['img']['name']) != ""){
             echo 'here';
             $pictureAllowed = ['png', 'PNG', 'jpg', 'JPG', 'jpeg', 'JPEG', 'gif', 'GIF', 'webp', 'WEBP', 'jfif', 'JFIF'];
@@ -20,7 +21,6 @@
             $name = "$name.$ext";
             $enc_img_name = $secObj->encryptURLParam($name);
             if(in_array($ext, $pictureAllowed)){
-                $continue = true;
                 $_SESSION['img'] = $enc_img_name;
 
                 $location = "uploads/$name";
@@ -36,6 +36,7 @@
         }
 
         if($continue){
+            echo "me";
             $tblquery = "INSERT INTO not_verify VALUES(:id, :ln, :fn, :mn, :email, :password, :sex, :dob, :pn, :ms, :ref_name, :ref_email, :ref_number, :skills, :salary, :nationality, :soo, :country, :state, :cty, :ads, :ssn, :img, :cv, :bio, :available, :date, :verify)";
             $tblvalue = [
                 ':id' => NULL, 
@@ -90,8 +91,12 @@
                 <label for="cv">Upload your CV</label>
                 <input type="file" name="cv" id="cv">
             </div>
-            <button name="image" type="submit">Register</button>
+            <button name="image" type="submit">Proceed</button>
         </form>
+        <div class="button-group">
+            <a href="login" class="login-link">Login?</a>
+            <a href="forgotPassword" class="forgot-password-link">Forgot Password?</a>
+        </div>
     </div>
 
 <?php include('includes/auth/footer.php'); ?>

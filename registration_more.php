@@ -122,8 +122,12 @@
                     ?>
                 </select>
             </div>
-            <button type="submit">Register</button>
+            <button type="submit">Proceed</button>
         </form>
+        <div class="button-group">
+            <a href="login" class="login-link">Login?</a>
+            <a href="forgotPassword" class="forgot-password-link">Forgot Password?</a>
+        </div>
     </div>
 
 <?php include('includes/auth/footer.php'); ?>
