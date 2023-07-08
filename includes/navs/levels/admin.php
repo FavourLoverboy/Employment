@@ -6,6 +6,12 @@
         </a>
     </li>
     <li class="nav-link">
+        <a href="a/approveUsers">
+            <i class="bx bx-bar-chart-alt-2 icon"></i>
+            <span class="text nav-text">Approve Users</span>
+        </a>
+    </li>
+    <li class="nav-link">
         <a href="a/referrals">
             <i class="bx bx-bar-chart-alt-2 icon"></i>
             <span class="text nav-text">Referrals</span>

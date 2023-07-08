@@ -9,6 +9,7 @@
 
     $errFN = $errEmail = $errNumber = $number = $email = $fn = '';
     $validate_email = true;
+    $continue = true;
 
     function containsNumber($string) {
         if (preg_match('/\d/', $string)) {
@@ -28,31 +29,45 @@
     if($_POST){
         extract($_POST);
 
-        // Validating Email
-        $email = filter_var($email, FILTER_SANITIZE_EMAIL);
-        if(!filter_var($email, FILTER_VALIDATE_EMAIL)){
-            $validate_email = false;
+        if(!empty($fn)){
+            if(containsNumber($fn)){
+                $errFN = "We kindly request you to ensure that your full name does not include any numerical characters";
+                $continue = false;
+            }
         }
 
-        if(containsNumber($fn)) {
-            $errFN = "FullName must not contain a number.";
-        } else {
-            if($validate_email){
-                if(containsString($number)){
-                    if(!(strlen($number) < 7 || strlen($number) > 15)){
-                        $_SESSION['re_fullname'] = $secObj->encryptURLParam(ucwords($fn));
-                        $_SESSION['re_email'] = $secObj->encryptURLParam(strtolower($email));
-                        $_SESSION['re_number'] = $secObj->encryptURLParam($number);
-                        echo "<script>  window.location='files' </script>";
-                    }else{
-                        $errNumber = "Invalid mobile number";
-                    }
-                }else{
-                    $errNumber = "Must contain only numbers";
+        if(!empty($email)){
+            // Validating Email
+            $email = filter_var($email, FILTER_SANITIZE_EMAIL);
+            if(!filter_var($email, FILTER_VALIDATE_EMAIL)){
+                $validate_email = false;
+            }
+            
+            if(!$validate_email){
+                $continue = false;
+                $errEmail = "We apologize for the inconvenience, but it seems that the email provided is invalid";
+            }
+        }
+
+        if(!empty($number)){
+            if(containsString($number)){
+                if((strlen($number) < 7 || strlen($number) > 15)){
+                    $errNumber = "
+                    We regret to inform you that the mobile number provided is invalid. Please ensure that the number is entered correctly and meets the required format";
+                    $continue = false;
                 }
             }else{
-                $errEmail = "Invalid email";
+                $errNumber = "
+                Please ensure that the provided information consists solely of numerical characters";
+                $continue = false;
             }
+        }
+
+        if($continue){
+            $_SESSION['re_fullname'] = $secObj->encryptURLParam(ucwords($fn));
+            $_SESSION['re_email'] = $secObj->encryptURLParam(strtolower($email));
+            $_SESSION['re_number'] = $secObj->encryptURLParam($number);
+            echo "<script>  window.location='files' </script>";
         }
     }
 
@@ -78,6 +93,7 @@
             </div>
             <button type="submit">Proceed</button>
         </form>
+        <br>
         <div class="button-group">
             <a href="login" class="login-link">Login?</a>
             <a href="forgotPassword" class="forgot-password-link">Forgot Password?</a>

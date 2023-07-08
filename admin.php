@@ -33,7 +33,7 @@
                 if($_SESSION['password'] == $pwd){
                     $_SESSION['level'] = 'admin';
                     header('location: a/dashboard');
-                    echo "<script>  window.location='user/dashboard' </script>";
+                    echo "<script>  window.location='a/dashboard' </script>";
                 }else{
                     $errPassword = "incorrect password";
                 }

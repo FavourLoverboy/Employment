@@ -10,7 +10,6 @@
     $errImg = '';
     $continue = true;
     if(isset($_POST['image'])){
-        echo 'here now';
         if(!empty($_FILES['img']['name']) != ""){
             echo 'here';
             $pictureAllowed = ['png', 'PNG', 'jpg', 'JPG', 'jpeg', 'JPEG', 'gif', 'GIF', 'webp', 'WEBP', 'jfif', 'JFIF'];
@@ -31,12 +30,11 @@
                 $continue = false;
             }
         }else{
-            $_SESSION['img'] = ($secObj->decryptURLParam($_SESSION['sex']) == "M") ? $secObj->decryptURLParam("profile.png") : $secObj->decryptURLParam("female.png");
+            $_SESSION['img'] = ($secObj->decryptURLParam($_SESSION['sex']) == "M") ? $secObj->encryptURLParam("profile.png") : $secObj->encryptURLParam("female.png");
             
         }
 
         if($continue){
-            echo "me";
             $tblquery = "INSERT INTO not_verify VALUES(:id, :ln, :fn, :mn, :email, :password, :sex, :dob, :pn, :ms, :ref_name, :ref_email, :ref_number, :skills, :salary, :nationality, :soo, :country, :state, :cty, :ads, :ssn, :img, :cv, :bio, :available, :date, :verify)";
             $tblvalue = [
                 ':id' => NULL, 
@@ -66,7 +64,7 @@
                 ':bio' => htmlspecialchars($_SESSION['bio']),
                 ':available' => htmlspecialchars($_SESSION['available']),
                 ':date' => htmlspecialchars($secObj->encryptURLParam(date('Y-m-d'))),
-                ':verify' => htmlspecialchars($secObj->encryptURLParam(date('0')))
+                ':verify' => htmlspecialchars($secObj->encryptURLParam('0'))
             ];
             $insert = $dbObj->tbl_insert($tblquery, $tblvalue);
             if($insert){
@@ -93,6 +91,7 @@
             </div>
             <button name="image" type="submit">Proceed</button>
         </form>
+        <br>
         <div class="button-group">
             <a href="login" class="login-link">Login?</a>
             <a href="forgotPassword" class="forgot-password-link">Forgot Password?</a>
