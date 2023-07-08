@@ -2,12 +2,13 @@
     include('includes/auth/header.php');
     echo "<title>Login | Admin - Nack </title>";
 
-    $errEmail = $errPassword = $email = '';
+    $errEmail = $errPassword = $e = '';
     $validate_email = true;
     $continue = false;
 
     if($_POST){
         extract($_POST);
+        $e = $email;
         $enc_email = $secObj->encryptURLParam(strtolower($email));
         $pwd = $secObj->encryptPassword($password);
 
@@ -54,10 +55,10 @@
                     header('location: user/dashboard');
                     echo "<script>  window.location='user/dashboard' </script>";
                 }else{
-                    $errPassword = "your account has been disabled";
+                    $errPassword = "Your account has been suspended";
                 }
             }else{
-                $errPassword = "incorrect password";
+                $errPassword = "Please try again with a different password";
             }
         }
     }
@@ -68,7 +69,7 @@
         <form method="POST">
             <div class="form-group">
                 <label for="email">Email</label>
-                <input type="email" id="email" name="email" placeholder="enter email" value="<?php echo $email; ?>" required>
+                <input type="email" id="email" name="email" placeholder="enter email" value="<?php echo $e; ?>" required>
                 <span class="error"><?php echo $errEmail; ?></span>
             </div>
             <div class="form-group">
