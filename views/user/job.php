@@ -31,7 +31,7 @@
                     <tr>
                         <th>Title</th>
                         <th>Sluts</th>
-                        <th>Amount</th>
+                        <th>Fee</th>
                         <th>Payment</th>
                         <th>Time</th>
                         <th>Date</th>

@@ -363,3 +363,45 @@ table td{
     margin: 10px auto;
     width: 80%;
 }
+
+
+/* enroll */
+.job-container {
+    color: var(--text-color);
+    max-width: 600px;
+    margin: 0 auto;
+    margin-bottom: 10px;
+    padding: 20px;
+    border: 1px solid var(--sidebar-color);
+    background-color: var(--sidebar-color);
+}
+
+.job-details {
+    margin-top: 20px;
+}
+
+.job-details p {
+    margin: 10px 0;
+}
+
+.job-details label {
+    font-weight: bold;
+}
+
+.job-description {
+    margin-top: 20px;
+}
+
+.job-description label {
+    display: block;
+    font-weight: bold;
+}
+
+.job-description p {
+    margin-top: 10px;
+}
+
+.job-footer {
+    margin-top: 20px;
+    text-align: center;
+}
