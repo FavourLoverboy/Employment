@@ -1,54 +1,23 @@
 <section class="home">
     <?php 
-        $title = $Availability = $slut = $amt = $pt = $des = "";
-        $validate_email = true;
+        $title = $available = $slut = $amt = $pt = $des = "";
         if($_POST){
             extract($_POST);
-            $e = $email;
-            $enc_email = $secObj->encryptURLParam(strtolower($email));
-            $n = $name;
-            $enc_name = $secObj->encryptURLParam(ucfirst($name));
-
-             // Validating Email
-            $email = filter_var($email, FILTER_SANITIZE_EMAIL);
-            if(!filter_var($email, FILTER_VALIDATE_EMAIL)){
-                $validate_email = false;
-            }
-            if($validate_email){
-                // Checking for email
-                $tblquery = "SELECT * FROM referral WHERE email = :email";
-                $tblvalue = [
-                    ':email' => htmlspecialchars($enc_email)
-                ];
-                $select = $dbObj->tbl_select($tblquery, $tblvalue);
-                if(!$select){
-                    $password = $secObj->encryptPassword('123456');
-                    $code = $secObj->encryptURLParam(substr(time(), -5));
-                    $date = date('Y-m-d');
-                    $date = $secObj->encryptURLParam($date);
-                    $status = $secObj->encryptURLParam('1');
-
-                    $tblquery = "INSERT INTO referral VALUES(:id, :name, :email, :password, :code, :img, :date, :status)";
-                    $tblvalue = [
-                        ':id' => NULL, 
-                        ':name' => htmlspecialchars($enc_name),
-                        ':email' => htmlspecialchars($enc_email), 
-                        ':password' => htmlspecialchars($password), 
-                        ':code' => htmlspecialchars($code),
-                        ':img' => htmlspecialchars(""),
-                        ':date' => htmlspecialchars($date),
-                        ':status' => htmlspecialchars($status)
-                    ];
-                    $insert = $dbObj->tbl_insert($tblquery, $tblvalue);
-                    if($insert){
-                        $e = $n = $errEmail = '';
-                        echo "<script>  window.location='a/referrals/success' </script>";
-                    }
-                }else{
-                    $errEmail = 'email already in use';
-                }
-            }else{
-                $errEmail = 'invalid email';
+            $tblquery = "INSERT INTO jobs VALUES(:id, :title, :ava, :slut, :amt, :payment, :des, :date, :status)";
+            $tblvalue = [
+                ':id' => NULL, 
+                ':title' => htmlspecialchars($secObj->encryptURLParam(ucwords($title))),
+                ':ava' => htmlspecialchars($secObj->encryptURLParam($available)), 
+                ':slut' => htmlspecialchars($secObj->encryptURLParam(ucwords($slut))), 
+                ':amt' => htmlspecialchars($secObj->encryptURLParam($amt)),
+                ':payment' => htmlspecialchars($secObj->encryptURLParam($pt)),
+                ':des' => htmlspecialchars($secObj->encryptURLParam($des)),
+                ':date' => htmlspecialchars($secObj->encryptURLParam(date('Y-m-d'))),
+                ':status' => htmlspecialchars($secObj->encryptURLParam('1'))
+            ];
+            $insert = $dbObj->tbl_insert($tblquery, $tblvalue);
+            if($insert){
+                echo "<script>  window.location='a/job/success' </script>";
             }
         }
 
@@ -65,7 +34,7 @@
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLabel">Referral Details</h5>
+                        <h5 class="modal-title" id="exampleModalLabel">Job Details</h5>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                         </button>
@@ -150,20 +119,19 @@
             <?php 
             
                 if(isset($url[2]) AND $url[2] == 'success'){
-                    echo "<p class='text-success'>referral have been added</p>";
-                }elseif(isset($errEmail)){
-                    echo "<p class='text-danger'>$errEmail</p>";
+                    echo "<p class='text-success'>Job have been added</p>";
                 }
             
             ?>
             <table id="dataTable" class="table table-bordered table-striped table-hover">
                 <thead>
                     <tr>
-                        <th>Image</th>
-                        <th>Name</th>
-                        <th>User</th>
-                        <th>Email</th>
-                        <th>Code</th>
+                        <th>Users</th>
+                        <th>Title</th>
+                        <th>Sluts</th>
+                        <th>Amount</th>
+                        <th>Payment</th>
+                        <th>Time</th>
                         <th>Date</th>
                         <th>Status</th>
                         <th>view</th>
