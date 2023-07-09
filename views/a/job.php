@@ -86,6 +86,7 @@
                                                 <option value='" . $pt . "'>" . $pt . "</option>
                                                 <option value='Hourly'>Hourly</option>
                                                 <option value='Daily'>Daily</option>
+                                                <option value='Contract'>Contract</option>
                                                 <option value='Weekly'>Weekly</option>
                                                 <option value='Monthly'>Monthly</option>
                                             ";
@@ -94,6 +95,7 @@
                                                 <option value=''>Choose</option>
                                                 <option value='Hourly'>Hourly</option>
                                                 <option value='Daily'>Daily</option>
+                                                <option value='Contract'>Contract</option>
                                                 <option value='Weekly'>Weekly</option>
                                                 <option value='Monthly'>Monthly</option>
                                             ";
