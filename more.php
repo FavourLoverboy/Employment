@@ -96,6 +96,9 @@
             <a href="login" class="login-link">Login?</a>
             <a href="forgotPassword" class="forgot-password-link">Forgot Password?</a>
         </div>
+        <div class="button-group">
+            <a href="#" class="login-link">Home</a>
+        </div>
     </div>
 
 <?php include('includes/auth/footer.php'); ?>

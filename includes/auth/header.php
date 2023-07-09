@@ -26,3 +26,4 @@
     <link rel="stylesheet" href="css/auth/auth.css">
 </head>
 <body>
+    <div class="overlay"></div>

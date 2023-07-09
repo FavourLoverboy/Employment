@@ -53,6 +53,19 @@ body.dark{
     color: var(--text-color);
 }
 
+input[type="text"],
+input[type="email"],
+input[type="password"],
+input[type="number"],
+input[type="date"],
+select, textarea{
+    width: 99%;
+    padding: 10px;
+    font-size: 16px;
+    border-radius: 3px;
+    border: 1px solid #ccc;
+}
+
 /* sidebar */
 .sidebar{
     background: var(--sidebar-color);

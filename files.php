@@ -89,12 +89,21 @@
                 <label for="cv">Upload your CV</label>
                 <input type="file" name="cv" id="cv">
             </div>
-            <button name="image" type="submit">Proceed</button>
+            <div class="form-group">
+                <label for="terms-checkbox">
+                <input type="checkbox" id="terms-checkbox" name="terms-checkbox" required>
+                <a href="#">I accept the terms and conditions.</a>
+                </label>
+            </div>
+            <button name="image" type="submit">Register</button>
         </form>
         <br>
         <div class="button-group">
             <a href="login" class="login-link">Login?</a>
             <a href="forgotPassword" class="forgot-password-link">Forgot Password?</a>
+        </div>
+        <div class="button-group">
+            <a href="#" class="login-link">Home</a>
         </div>
     </div>
 
