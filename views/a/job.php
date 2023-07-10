@@ -1,7 +1,7 @@
 <section class="home">
     <?php 
         $title = $available = $slut = $amt = $pt = $des = "";
-        if($_POST){
+        if(isset($_POST['add'])){
             extract($_POST);
             $tblquery = "INSERT INTO jobs VALUES(:id, :title, :ava, :slut, :amt, :payment, :des, :date, :status)";
             $tblvalue = [
@@ -19,6 +19,22 @@
             if($insert){
                 echo "<script>  window.location='a/job/success' </script>";
             }
+        }
+
+        if(isset($_POST['view'])){
+            extract($_POST);
+
+            $_SESSION['job_id'] = $id;
+            $_SESSION['job_name'] = $name;
+            $_SESSION['job_slut'] = $slut;
+            $_SESSION['job_amt'] = $amt;
+            $_SESSION['job_payment'] = $payment;
+            $_SESSION['job_ava'] = $ava;
+            $_SESSION['job_users'] = $users;
+            $_SESSION['job_des'] = $des;
+            $_SESSION['job_date'] = $date;
+
+            echo "<script>  window.location='a/viewJob' </script>";
         }
 
     ?>
@@ -122,6 +138,10 @@
             
                 if(isset($url[2]) AND $url[2] == 'success'){
                     echo "<p class='text-success'>Job have been added</p>";
+                }elseif(isset($url[2]) AND $url[2] == 'delete'){
+                    echo "<p class='text-danger'>Job have been removed</p>";
+                }elseif(isset($url[2]) AND $url[2] == 'terminate'){
+                    echo "<p class='text-warning'>Job have been terminated</p>";
                 }
             
             ?>
@@ -142,8 +162,10 @@
                 <tbody>
                     <?php 
                     
-                        $tblquery = "SELECT jobs.title, jobs.ava, jobs.slut, jobs.amt, jobs.payment, jobs.des, jobs.date, jobs.status, COUNT(enroll.job_id) AS user_count FROM jobs LEFT JOIN enroll ON jobs.id = enroll.job_id GROUP BY jobs.id, jobs.title, jobs.ava, jobs.slut, jobs.amt, jobs.payment, jobs.des";
-                        $tblvalue = [];
+                        $tblquery = "SELECT jobs.id, jobs.title, jobs.ava, jobs.slut, jobs.amt, jobs.payment, jobs.des, jobs.date, jobs.status, COUNT(enroll.job_id) AS user_count FROM jobs LEFT JOIN enroll ON jobs.id = enroll.job_id WHERE jobs.status != :status GROUP BY jobs.id, jobs.title, jobs.ava, jobs.slut, jobs.amt, jobs.payment, jobs.des";
+                        $tblvalue = [
+                            ':status' => htmlspecialchars($secObj->encryptURLParam('2'))
+                        ];
                         $select = $dbObj->tbl_select($tblquery, $tblvalue);
                         if($select){
                             foreach($select as $data){
@@ -176,8 +198,17 @@
                                             <span class='btn $color btn-sm'>$status</span>
                                         </td>
                                         <td>
-                                            <form>
-                                                <input type='submit' class='btn btn-info btn-sm' value='view'>
+                                            <form method='POST'>
+                                                <input type='hidden' name='id' value='" . $id . "'>
+                                                <input type='hidden' name='users' value='" . $user_count . "'>
+                                                <input type='hidden' name='name' value='" . $title . "'>
+                                                <input type='hidden' name='slut' value='" . $slut . "'>
+                                                <input type='hidden' name='amt' value='" . $amt . "'>
+                                                <input type='hidden' name='payment' value='" . $payment . "'>
+                                                <input type='hidden' name='ava' value='" . $ava . "'>
+                                                <input type='hidden' name='des' value='" . $des . "'>
+                                                <input type='hidden' name='date' value='" . $date . "'>
+                                                <input name='view' type='submit' class='btn btn-info btn-sm' value='view'>
                                             </form>
                                         </td>
                                     </tr>

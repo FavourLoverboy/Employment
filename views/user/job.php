@@ -19,13 +19,6 @@
     <div id="dynamicContent">
         <div class="text">Jobs</div>
         <div class="table-section">
-            <?php 
-            
-                if(isset($url[2]) AND $url[2] == 'success'){
-                    echo "<p class='text-success'>Job have been added</p>";
-                }
-            
-            ?>
             <table id="dataTable" class="table table-bordered table-striped table-hover">
                 <thead>
                     <tr>
