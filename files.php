@@ -11,7 +11,6 @@
     $continue = true;
     if(isset($_POST['image'])){
         if(!empty($_FILES['img']['name']) != ""){
-            echo 'here';
             $pictureAllowed = ['png', 'PNG', 'jpg', 'JPG', 'jpeg', 'JPEG', 'gif', 'GIF', 'webp', 'WEBP', 'jfif', 'JFIF'];
             $fileName = $_FILES['img']['name'];
             $ext = pathinfo($fileName, PATHINFO_EXTENSION);
@@ -33,6 +32,7 @@
             $_SESSION['img'] = ($secObj->decryptURLParam($_SESSION['sex']) == "M") ? $secObj->encryptURLParam("profile.png") : $secObj->encryptURLParam("female.png");
             
         }
+        echo $_SESSION['img'];
 
         if($continue){
             $tblquery = "INSERT INTO not_verify VALUES(:id, :ln, :fn, :mn, :email, :password, :sex, :dob, :pn, :ms, :ref_name, :ref_email, :ref_number, :skills, :salary, :nationality, :soo, :country, :state, :cty, :ads, :ssn, :img, :cv, :bio, :available, :date, :verify)";
@@ -68,7 +68,7 @@
             ];
             $insert = $dbObj->tbl_insert($tblquery, $tblvalue);
             if($insert){
-                echo "<script>  window.location='login' </script>";
+                // echo "<script>  window.location='login' </script>";
             }
         }
     }
@@ -92,7 +92,7 @@
             <div class="form-group">
                 <label for="terms-checkbox">
                 <input type="checkbox" id="terms-checkbox" name="terms-checkbox" required>
-                <a href="#">I accept the terms and conditions.</a>
+                <a href="#">make sure that your ID me is verify</a>
                 </label>
             </div>
             <button name="image" type="submit">Register</button>

@@ -142,15 +142,18 @@
                 <tbody>
                     <?php 
                     
-                        $tblquery = "SELECT referral.id, referral.name, referral.email, referral.code, referral.img, referral.date, referral.status, COUNT(users.id) AS user_count FROM referral LEFT JOIN users ON referral.code = users.ref GROUP BY referral.code ORDER BY referral.name";
+                        $tblquery = "SELECT jobs.title, jobs.ava, jobs.slut, jobs.amt, jobs.payment, jobs.des, jobs.date, jobs.status, COUNT(enroll.job_id) AS user_count FROM jobs LEFT JOIN enroll ON jobs.id = enroll.job_id GROUP BY jobs.id, jobs.title, jobs.ava, jobs.slut, jobs.amt, jobs.payment, jobs.des";
                         $tblvalue = [];
                         $select = $dbObj->tbl_select($tblquery, $tblvalue);
                         if($select){
                             foreach($select as $data){
                                 extract($data);
-                                $name = $secObj->decryptURLParam($name);
-                                $email = $secObj->decryptURLParam($email);
-                                $code = $secObj->decryptURLParam($code);
+                                $title = $secObj->decryptURLParam($title);
+                                $ava = $secObj->decryptURLParam($ava);
+                                $slut = $secObj->decryptURLParam($slut);
+                                $amt = $secObj->decryptURLParam($amt);
+                                $payment = $secObj->decryptURLParam($payment);
+                                $des = $secObj->decryptURLParam($des);
                                 $date = $secObj->decryptURLParam($date);
                                 $status = $secObj->decryptURLParam($status);
                                 if($status == '1'){
@@ -160,22 +163,14 @@
                                     $status = 'disable';
                                     $color = 'btn-danger';
                                 }
-
-                                if($img){
-                                    $img = $secObj->decryptURLParam($img);
-                                    $imgPath = "uploads/referrals/" . $id . "/$img";
-                                }else{
-                                    $imgPath = "assets/images/profile.png";
-                                }
                                 echo "
                                     <tr>
-                                        <td>
-                                            <img src='$imgPath' alt='referral image' style='border-radius: 50%;height:30px; width:30px;'>
-                                        </td>
-                                        <td>$name</td>
                                         <td> " . $user_count . "</td>
-                                        <td>$email</td>
-                                        <td>$code</td>
+                                        <td>$title</td>
+                                        <td>$slut</td>
+                                        <td>$$amt</td>
+                                        <td>$payment</td>
+                                        <td>$ava</td>
                                         <td>$date</td>
                                         <td>
                                             <span class='btn $color btn-sm'>$status</span>

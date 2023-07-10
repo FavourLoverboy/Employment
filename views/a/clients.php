@@ -52,7 +52,7 @@
                                 }elseif($sex == 'M'){
                                     $imgPath = "assets/images/profile.png";
                                 }else{
-                                    $imgPath = "assets/images/female.png";
+                                    $imgPath = "assets/images/female.jpg";
                                 }
                                 echo "
                                     <tr>

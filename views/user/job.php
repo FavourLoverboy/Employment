@@ -81,7 +81,7 @@
                                                     <input type='hidden' name='ava' value='" . $ava . "'>
                                                     <input type='hidden' name='des' value='" . $des . "'>
                                                     <input type='hidden' name='date' value='" . $date . "'>
-                                                    <input name='enroll' type='submit' class='btn btn-success btn-sm' value='enroll'>
+                                                    <input name='enroll' type='submit' class='btn btn-success btn-sm' value='apply'>
                                                 </form>
                                             </td>
                                         </tr>
@@ -97,7 +97,7 @@
                                             <td>$date</td>
                                             <td>
                                                 <form method='POST'>
-                                                    <input name='enroll' type='submit' class='btn btn-primary btn-sm' value='enroll' disabled>
+                                                    <input name='enroll' type='submit' class='btn btn-primary btn-sm' value='applied' disabled>
                                                 </form>
                                             </td>
                                         </tr>
