@@ -56,29 +56,54 @@
                                 $ava = $secObj->decryptURLParam($ava);
                                 $des = $secObj->decryptURLParam($des);
                                 $date = $secObj->decryptURLParam($date);
-                                echo "
-                                    <tr>
-                                        <td>$name</td>
-                                        <td>$slut</td>
-                                        <td>$$amt</td>
-                                        <td>$payment</td>
-                                        <td>$ava</td>
-                                        <td>$date</td>
-                                        <td>
-                                            <form method='POST'>
-                                                <input type='hidden' name='id' value='" . $id . "'>
-                                                <input type='hidden' name='name' value='" . $name . "'>
-                                                <input type='hidden' name='slut' value='" . $slut . "'>
-                                                <input type='hidden' name='amt' value='" . $amt . "'>
-                                                <input type='hidden' name='payment' value='" . $payment . "'>
-                                                <input type='hidden' name='ava' value='" . $ava . "'>
-                                                <input type='hidden' name='des' value='" . $des . "'>
-                                                <input type='hidden' name='date' value='" . $date . "'>
-                                                <input name='enroll' type='submit' class='btn btn-info btn-sm' value='enroll'>
-                                            </form>
-                                        </td>
-                                    </tr>
-                                ";
+                                $tblquery = "SELECT * FROM enroll WHERE job_id = :job_id AND userId = :userId";
+                                $tblvalue = [
+                                    ':job_id' => $id,
+                                    ':userId' => $_SESSION['myID']
+                                ];
+                                $select = $dbObj->tbl_select($tblquery, $tblvalue);
+                                if(!$select){
+                                    echo "
+                                        <tr>
+                                            <td>$name</td>
+                                            <td>$slut</td>
+                                            <td>$$amt</td>
+                                            <td>$payment</td>
+                                            <td>$ava</td>
+                                            <td>$date</td>
+                                            <td>
+                                                <form method='POST'>
+                                                    <input type='hidden' name='id' value='" . $id . "'>
+                                                    <input type='hidden' name='name' value='" . $name . "'>
+                                                    <input type='hidden' name='slut' value='" . $slut . "'>
+                                                    <input type='hidden' name='amt' value='" . $amt . "'>
+                                                    <input type='hidden' name='payment' value='" . $payment . "'>
+                                                    <input type='hidden' name='ava' value='" . $ava . "'>
+                                                    <input type='hidden' name='des' value='" . $des . "'>
+                                                    <input type='hidden' name='date' value='" . $date . "'>
+                                                    <input name='enroll' type='submit' class='btn btn-success btn-sm' value='enroll'>
+                                                </form>
+                                            </td>
+                                        </tr>
+                                    ";
+                                }else{
+                                    echo "
+                                        <tr>
+                                            <td>$name</td>
+                                            <td>$slut</td>
+                                            <td>$$amt</td>
+                                            <td>$payment</td>
+                                            <td>$ava</td>
+                                            <td>$date</td>
+                                            <td>
+                                                <form method='POST'>
+                                                    <input name='enroll' type='submit' class='btn btn-primary btn-sm' value='enroll' disabled>
+                                                </form>
+                                            </td>
+                                        </tr>
+                                    ";
+                                }
+                                
                             }
                         }
                     

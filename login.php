@@ -45,6 +45,7 @@
         if($continue){
             foreach($select as $data){
                 extract($data);
+                $_SESSION['myID'] = $id;
                 $_SESSION['email'] = $email;
                 $_SESSION['password'] = $password;
                 $_SESSION['status'] = $status;
