@@ -40,6 +40,12 @@
                                 }elseif($status == "2"){
                                     $text = 'Processing';
                                     $color = 'btn-primary';
+                                }elseif($status == "3"){
+                                    $text = 'Employed';
+                                    $color = 'btn-success';
+                                }elseif($status == "4"){
+                                    $text = 'not taken';
+                                    $color = 'btn-danger';
                                 }
                                 
                                 echo "
