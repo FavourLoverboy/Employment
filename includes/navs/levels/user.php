@@ -6,6 +6,12 @@
         </a>
     </li>
     <li class="nav-link">
+        <a href="user/enrolled">
+            <i class="bx bx-bar-chart-alt-2 icon"></i>
+            <span class="text nav-text">Enrolled</span>
+        </a>
+    </li>
+    <li class="nav-link">
         <a href="user/job">
             <i class="bx bx-bar-chart-alt-2 icon"></i>
             <span class="text nav-text">Jobs</span>
