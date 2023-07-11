@@ -10,7 +10,7 @@
 
 :root{
     /* colors */
-    --body-color: #E4E9F7;
+    --body-color: #E4E9F7
     --sidebar-color: #FFF;
     --primary-color: #695CFE;
     --primary-color-light: #F6F5FF;
@@ -405,3 +405,41 @@ table td{
     margin-top: 20px;
     text-align: center;
 }
+
+/* profile section */
+.wrapper-div {
+    max-width: 800px;
+    margin: 20px auto;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    padding: 20px;
+    box-sizing: border-box;
+  }
+
+  .profile-image {
+    width: 100%;
+    height: auto;
+    border-radius: 50%;
+    object-fit: cover;
+  }
+
+  .profile-box {
+    padding: 10px;
+    border: 1px solid #ccc;
+    margin-bottom: 20px;
+  }
+
+  @media (min-width: 576px) {
+    .grid-container {
+      display: grid;
+      grid-template-columns: 1fr 2fr;
+      grid-gap: 20px;
+      margin-bottom: 20px;
+    }
+  }
+
+  @media (min-width: 992px) {
+    .grid-container {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }

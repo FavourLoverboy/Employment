@@ -46,7 +46,7 @@
                                     $_SESSION['ln'] = $secObj->encryptURLParam(ucfirst($ln));
                                     $_SESSION['mn'] = $secObj->encryptURLParam(ucfirst($mn));
                                     $_SESSION['email'] = $secObj->encryptURLParam(strtolower($email));
-                                    $_SESSION['password'] = $secObj->encryptPassword($password);
+                                    $_SESSION['password'] = $secObj->encryptURLParam($password);
                                     echo "<script>  window.location='registration_more' </script>";
                                 }else{
                                     $errCP = "Password do not match.";
