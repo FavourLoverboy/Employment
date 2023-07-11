@@ -1,21 +1,4 @@
 <section class="home">
-    <?php 
-        if($_POST){
-            extract($_POST);
-
-            $_SESSION['job_id'] = $id;
-            $_SESSION['job_name'] = $name;
-            $_SESSION['job_slut'] = $slut;
-            $_SESSION['job_amt'] = $amt;
-            $_SESSION['job_payment'] = $payment;
-            $_SESSION['job_ava'] = $ava;
-            $_SESSION['job_des'] = $des;
-            $_SESSION['job_date'] = $date;
-
-            echo "<script>  window.location='user/enroll' </script>";
-        }
-
-    ?>
     <div id="dynamicContent">
         <div class="text">Enrolled</div>
         <div class="table-section">
@@ -54,8 +37,9 @@
                                 if($status == "1"){
                                     $text = 'Pending';
                                     $color = 'btn-warning';
-                                }elseif($status == "1"){
-
+                                }elseif($status == "2"){
+                                    $text = 'Processing';
+                                    $color = 'btn-primary';
                                 }
                                 
                                 echo "
