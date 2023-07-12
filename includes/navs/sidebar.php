@@ -27,10 +27,10 @@
 
     <div class="menu-bar">
         <div class="menu">
-            <li class="search-box">
+            <!-- <li class="search-box">
                 <i class="bx bx-search icon"></i>
                 <input type="search" placeholder="Search...">
-            </li>
+            </li> -->
             <?php
                 if($_SESSION['level'] == 'admin'){
                     include('levels/admin.php');

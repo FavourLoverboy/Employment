@@ -10,7 +10,7 @@
         extract($_POST);
         $e = $email;
         $enc_email = $secObj->encryptURLParam(strtolower($email));
-        $pwd = $secObj->encryptPassword($password);
+        $pwd = $secObj->encryptURLParam($password);
 
         // Validating Email
         $email = filter_var($email, FILTER_SANITIZE_EMAIL);

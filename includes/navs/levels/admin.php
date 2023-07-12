@@ -5,7 +5,7 @@
             <span class="text nav-text">Dashboard</span>
         </a>
     </li>
-    <li class="nav-link">
+    <!-- <li class="nav-link">
         <a href="a/approveUsers">
             <i class="bx bx-bar-chart-alt-2 icon"></i>
             <span class="text nav-text">Approve Users</span>
@@ -16,13 +16,13 @@
             <i class="bx bx-bar-chart-alt-2 icon"></i>
             <span class="text nav-text">Clients</span>
         </a>
-    </li>
-    <li class="nav-link">
+    </li> -->
+    <!-- <li class="nav-link">
         <a href="a/job">
             <i class="bx bx-bar-chart-alt-2 icon"></i>
             <span class="text nav-text">Jobs</span>
         </a>
-    </li>
+    </li> -->
     <li class="nav-link">
         <a href="a/payment">
             <i class="bx bx-bar-chart-alt-2 icon"></i>

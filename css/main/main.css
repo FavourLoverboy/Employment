@@ -10,7 +10,7 @@
 
 :root{
     /* colors */
-    --body-color: #E4E9F7
+    --body-color: #E4E9F7;
     --sidebar-color: #FFF;
     --primary-color: #695CFE;
     --primary-color-light: #F6F5FF;
@@ -414,32 +414,89 @@ table td{
     border: 1px solid #ccc;
     padding: 20px;
     box-sizing: border-box;
-  }
+}
 
-  .profile-image {
+.wrapper-div .profile-image {
     width: 100%;
     height: auto;
     border-radius: 50%;
     object-fit: cover;
-  }
+}
 
-  .profile-box {
+.wrapper-div .profile-box {
     padding: 10px;
     border: 1px solid #ccc;
     margin-bottom: 20px;
-  }
+}
 
-  @media (min-width: 576px) {
+@media (min-width: 576px) {
     .grid-container {
-      display: grid;
-      grid-template-columns: 1fr 2fr;
-      grid-gap: 20px;
-      margin-bottom: 20px;
+        display: grid;
+        grid-template-columns: 1fr 2fr;
+        grid-gap: 20px;
+        margin-bottom: 20px;
     }
-  }
+}
 
-  @media (min-width: 992px) {
+@media (min-width: 992px) {
     .grid-container {
-      grid-template-columns: repeat(3, 1fr);
+        grid-template-columns: repeat(3, 1fr);
     }
-  }
+}
+
+
+/* dashboard */
+.container-dashboard {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.container-dashboard .box {
+    width: 100%;
+    max-width: 300px;
+    margin-bottom: 20px;
+    /* padding: 20px; */
+    background-color: var(--primary-color-light);
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.container-dashboard .box > div:first-child {
+    padding-top: 10px;
+    /* background: blue; */
+    width: 75%;
+    color: var(--text-color);
+    /* text-align: left;
+    padding-left: 10px; */
+}
+
+.container-dashboard .box > div:first-child h2{
+    font-size: 25px;
+}
+  
+.container-dashboard .box > div:last-child {
+    /* background: red; */
+    width: 25%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 40px;
+    color: var(--text-color);
+}
+
+@media (min-width: 576px) {
+    .container-dashboard .box {
+      width: calc(50% - 20px);
+    }
+}
+
+@media (min-width: 992px) {
+    .container-dashboard .box {
+      width: calc(25% - 20px);
+    }
+}
