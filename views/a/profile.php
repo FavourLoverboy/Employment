@@ -1,7 +1,7 @@
 <section class="home">
     <?php
                     
-        $tblquery = "SELECT * FROM admins WHERE id = :id";
+        $tblquery = "SELECT * FROM admin WHERE id = :id";
         $tblvalue = [
             ':id' => htmlspecialchars($_SESSION['myID'])
         ];
@@ -11,7 +11,7 @@
                 extract($data);
                 $name_details = $secObj->decryptURLParam($name);
                 $email_details = $secObj->decryptURLParam($email);
-                $date_details =  $secObj->decryptURLParam($date);
+                // $date_details =  $secObj->decryptURLParam($date);
             }
         }
 
@@ -23,7 +23,7 @@
             $e = $email;
             $enc_email = $secObj->encryptURLParam(strtolower($email));
             $n = $name;
-            $enc_name = $secObj->encryptURLParam(ucfirst($name));
+            $enc_name = $secObj->encryptURLParam(ucwords($name));
 
              // Validating Email
             $email = filter_var($email, FILTER_SANITIZE_EMAIL);
@@ -32,7 +32,7 @@
             }
             if($validate_email){
                 // Checking for email
-                $tblquery = "SELECT id FROM admins WHERE email = :email";
+                $tblquery = "SELECT id FROM admin WHERE email = :email";
                 $tblvalue = [
                     ':email' => htmlspecialchars($enc_email)
                 ];
@@ -45,7 +45,7 @@
                     }
                 }
                 if($continue){
-                    $tblquery = "UPDATE admins SET name = :name, email = :email WHERE id = :id";
+                    $tblquery = "UPDATE admin SET name = :name, email = :email WHERE id = :id";
                     $tblvalue = [
                         ':name' => htmlspecialchars($enc_name), 
                         ':email' => htmlspecialchars($enc_email),
@@ -78,7 +78,7 @@
             $en_new_pwd = $secObj->encryptPassword($newPassword);
             $en_cnew_pwd = $secObj->encryptPassword($cnewPassword);
 
-            $tblquery = "SELECT id FROM admins WHERE id = :id AND password = :password";
+            $tblquery = "SELECT id FROM admin WHERE id = :id AND password = :password";
             $tblvalue = [
                 ':id' => htmlspecialchars($_SESSION['myID']),
                 ':password' => htmlspecialchars($en_old_pwd)
@@ -90,7 +90,7 @@
                 }elseif($newPassword != $cnewPassword){
                     $errConfirm = "Password do not match";
                 }else{
-                    $tblquery = "UPDATE admins SET password = :password WHERE id = :id";
+                    $tblquery = "UPDATE admin SET password = :password WHERE id = :id";
                     $tblvalue = [
                         ':password' => htmlspecialchars($en_new_pwd),
                         ':id' => $_SESSION['myID']
@@ -152,8 +152,9 @@
             <div class="profile">
                 <div class="profile-image">
                     <?php 
-                        $imgFile = $secObj->decryptURLParam($_SESSION['img']);
-                        if($_SESSION['img'] AND file_exists("uploads/admins/$_SESSION[myID]/$imgFile")){
+                        // $imgFile = $secObj->decryptURLParam($_SESSION['img']);
+                        $imgFile = '';
+                        if(isset($_SESSION['img']) AND file_exists("uploads/$imgFile")){
                             echo "
                                 <img src='uploads/admins/$_SESSION[myID]/$imgFile' alt='User Image'>
                             ";
@@ -167,9 +168,9 @@
                     <p class="text-style"><?php echo $name_details; ?></p>
                 </div>
                 <div class="button-container">
-                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#image">
+                    <!-- <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#image">
                         Change image
-                    </button>
+                    </button> -->
                     <button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#password">
                         Change password
                     </button>
@@ -188,10 +189,10 @@
                         <label>Email:</label>
                         <input type="email" value="<?php echo $email_details; ?>" class="form-control" disabled>
                     </div>
-                    <div class="form-group">
+                    <!-- <div class="form-group">
                         <label>Date:</label>
                         <input type="text" value="<?php echo $date_details; ?>" class="form-control" disabled>
-                    </div>
+                    </div> -->
                     <div class="form-button">
                         <button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#details">
                             update

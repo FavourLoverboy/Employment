@@ -27,6 +27,7 @@
             if($select){
                 foreach($select as $data){
                     extract($data);
+                    $_SESSION['myID'] = $id;
                     $_SESSION['email'] = $email;
                     $_SESSION['password'] = $password;
                 }
