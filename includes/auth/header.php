@@ -9,6 +9,7 @@
     $secObj = new Security();
 ?>
 <!DOCTYPE html>
+<html lang="en">
 <head>
     <base href="http://localhost/employment/">
     <meta charset="utf-8">
