@@ -1,110 +1,56 @@
 <?php 
     include('includes/auth/header.php');
-    echo "<title>Reset | Admin - Nack </title>";
-    // echo $secObj->encryptURLParam("5,users");
+    echo "<title>Login | Admin - Nack </title>";
 
-    $errCNewPassword = $errNewPassword= '';
+    $errNP = $errCP = '';
+    $_GET['q'] = "Ng%3D%3D";
     if(isset($_GET['q'])){
-        $q = $secObj->decryptURLParam($_GET['q']);
-        $q = explode(',', $q);
-        if($q[0] == "" || $q[1] == ""){
-            echo "<script>  window.location='login' </script>";
-        }
-        $levels = ['admins', 'referral', 'users'];
-        if(!in_array($q[1], $levels)){
-            echo "<script>  window.location='login' </script>";
-        }elseif($q[1] == $levels[0]){
-            $table = 'admin';
-        }elseif($q[1] == $levels[1]){
-            $table = 'referral';
-        }else{
-            $table = 'users';
-        }
+        $userId = $secObj->decryptURLParam($_GET['q']);
     }else{
         echo "<script>  window.location='login' </script>";
     }
 
     if($_POST){
         extract($_POST);
-        if(strlen($np) < 6){
-            $errNewPassword = "password must be more than 5 characters";
-        }elseif($np != $cnp){
-            $errCNewPassword = "password do not match";
+        if(strlen($np) < 5){
+            $errNP = "Password should be at least 6 characters.";
+        }elseif($np != $cp){
+            $errCP = "Password do not match.";
         }else{
-            $new_pwd = $secObj->encryptPassword($np);
-            $c_pwd = $secObj->encryptPassword($cnp);
-
-            $tblquery = "UPDATE $q[1] SET password = :password WHERE id = :id";
+            $np = $secObj->encryptURLParam($np);
+            $tblquery = "UPDATE users SET password = :password WHERE id = :id";
             $tblvalue = [
-                ':password' => htmlspecialchars($new_pwd),
-                ':id' => htmlspecialchars($q['0'])
+                ':password' => htmlspecialchars($np),
+                ':id' => $userId
             ];
             $update = $dbObj->tbl_update($tblquery, $tblvalue);
-            if($update){
-                if($q['1'] == 'admins'){
-                    $link = 'admin';
-                }elseif($q['1'] == 'referral'){
-                    $link = 'referral';
-                }else{
-                    $link = 'login';
-                }
-                echo "<script>  window.location='$link' </script>";
-            }
-
+            echo "<script>  window.location='login' </script>";
         }
     }
 ?>
 
     <div class="container">
-        <div class="left-box">
-            <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
-                <!-- <ol class="carousel-indicators">
-                    <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
-                    <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
-                    <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
-                </ol> -->
-                <div class="carousel-inner">
-                    <div class="carousel-item active">
-                        <img src="assets/images/1.png" class="d-block w-100" alt="Image 1">
-                    </div>
-                    <div class="carousel-item">
-                        <img src="assets/images/2.jpg" class="d-block w-100" alt="Image 2">
-                    </div>
-                    <div class="carousel-item">
-                        <img src="assets/images/3.png" class="d-block w-100" alt="Image 3">
-                    </div>
-                </div>
-                <!-- <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
-                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                    <span class="sr-only">Previous</span>
-                </a>
-                <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
-                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                    <span class="sr-only">Next</span>
-                </a> -->
+        <h1>Reset Password</h1>
+        <form method="POST">
+            <div class="form-group">
+                <label for="np">New Password</label>
+                <input type="password" id="np" name="np" placeholder="enter new password" required>
+                <span class="error"><?php echo $errNP; ?></span>
             </div>
+            <div class="form-group">
+                <label for="cp">Confirm Password</label>
+                <input type="password" id="cp" name="cp" placeholder="enter confirm password" required>
+                <span class="error"><?php echo $errCP; ?></span>
+            </div>
+            <button type="submit">Reset</button>
+        </form>
+        <br>
+        <div class="button-group">
+            <a href="registration_personal" class="login-link">Register?</a>
+            <a href="login" class="forgot-password-link">Login?</a>
         </div>
-        <div class="right-box">
-            <h2>Reset Password</h2>
-            <form id="login-form" method="POST">
-                <div class="form-group">
-                    <label for="np">New Password</label>
-                    <input type="password" id="np" name="np" placeholder="Enter new password" required>
-                    <span><?php echo $errNewPassword; ?></span>
-                </div>
-
-                <div class="form-group">
-                    <label for="cnp">Confirm Password</label>
-                    <input type="password" id="cnp" name="cnp" placeholder="Confirm password" required>
-                    <span><?php echo $errCNewPassword; ?></span>
-                </div>
-                <div class="form-group">
-                    <button type="submit">Proceed</button>
-                </div>
-                <!-- <div class="form-group register-link">
-                    Don't have an account? <a href="#">Register here</a>
-                </div> -->
-            </form>
+        <div class="button-group">
+            <a href="#" class="login-link">Home</a>
         </div>
     </div>
 

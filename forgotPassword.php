@@ -18,12 +18,14 @@
 
         if($validate_email){
             // Checking for email
-            $tblquery = "SELECT * FROM users WHERE email = :email";
+            $tblquery = "SELECT id FROM users WHERE email = :email";
             $tblvalue = [
                 ':email' => htmlspecialchars($enc_email)
             ];
             $select = $dbObj->tbl_select($tblquery, $tblvalue);
             if($select){
+                $userId = $secObj->encryptURLParam($select[0]['id']);
+                $link = "[]/resetPassword.php?q=$userId";
                 $errEmail = "We have dispatched a password reset link to your registered email address.";
                 $text_success = "text-success";
             }else{
