@@ -14,7 +14,7 @@
                         <p>" . $select[0]['totalUsers'] . "</p>
                     </div>
                     <div>
-                        <i class='bx bx-log-out'></i>
+                        <i class='bx bx-user'></i>
                     </div>
                 </div>
             ";
@@ -35,7 +35,7 @@
                         <p>" . $select[0]['totalUsers'] . "</p>
                     </div>
                     <div>
-                        <i class='bx bx-log-out'></i>
+                        <i class='bx bx-sun'></i>
                     </div>
                 </div>
             ";
@@ -56,7 +56,7 @@
                         <p>" . $select[0]['totalJobs'] . "</p>
                     </div>
                     <div>
-                        <i class='bx bx-log-out'></i>
+                        <i class='bx bx-store'></i>
                     </div>
                 </div>
             ";
@@ -77,7 +77,7 @@
                         <p>" . $select[0]['totalEnroll'] . "</p>
                     </div>
                     <div>
-                        <i class='bx bx-log-out'></i>
+                        <i class='bx bx-money'></i>
                     </div>
                 </div>
             ";
@@ -98,7 +98,7 @@
                         <p>" . $select[0]['totalEnroll'] . "</p>
                     </div>
                     <div>
-                        <i class='bx bx-log-out'></i>
+                        <i class='bx bx-loader'></i>
                     </div>
                 </div>
             ";
@@ -119,7 +119,7 @@
                         <p>" . $select[0]['totalUsers'] . "</p>
                     </div>
                     <div>
-                        <i class='bx bx-log-out'></i>
+                        <i class='bx bx-power-off'></i>
                     </div>
                 </div>
             ";
@@ -140,7 +140,7 @@
                         <p>" . $select[0]['totalUsers'] . "</p>
                     </div>
                     <div>
-                        <i class='bx bx-log-out'></i>
+                        <i class='bx bx-stop-circle'></i>
                     </div>
                 </div>
             ";
