@@ -122,8 +122,9 @@ select, textarea{
     position: relative;
 }
 .sidebar .image-text img{
-    border-radius: 6px;
-    width: 40px;
+    border-radius: 50%;
+    height: 50px;
+    width: 50px;
 }
 .sidebar header .image-text{
     align-items: center;

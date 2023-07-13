@@ -2,7 +2,26 @@
     <header>
         <div class="image-text">
             <span class="image">
-                <img src="assets/images/1.png" alt="logo">
+                <?php
+                
+                    if($_SESSION['level'] == "admin"){
+                        echo "
+                            <img src='assets/images/profile.png' alt='logo'>
+                        ";
+                    }elseif($_SESSION['level'] == "user"){
+                        $imgFile = $secObj->decryptURLParam($_SESSION['myImg']);
+                        if(file_exists("uploads/$imgFile")){
+                            echo "
+                                <img src='uploads/$imgFile' alt='User Image'/>
+                            ";
+                        }else{
+                            echo "
+                                <img src='assets/images/$imgFile' alt='User Image'/>
+                            ";
+                        }
+                    }
+                
+                ?>
             </span>
 
             <div class="text header-text">
