@@ -29,7 +29,7 @@
                 $continue = false;
             }
         }else{
-            $_SESSION['img'] = ($secObj->decryptURLParam($_SESSION['sex']) == "M") ? $secObj->encryptURLParam("profile.png") : $secObj->encryptURLParam("female.png");
+            $_SESSION['img'] = ($secObj->decryptURLParam($_SESSION['sex']) == "M") ? $secObj->encryptURLParam("profile.png") : $secObj->encryptURLParam("female.jpg");
             
         }
         echo $_SESSION['img'];

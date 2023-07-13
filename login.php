@@ -48,6 +48,7 @@
                 $_SESSION['myID'] = $id;
                 $_SESSION['email'] = $email;
                 $_SESSION['password'] = $password;
+                $_SESSION['mySex'] = $sex;
                 $_SESSION['myImg'] = $img;
                 $_SESSION['status'] = $status;
             }
