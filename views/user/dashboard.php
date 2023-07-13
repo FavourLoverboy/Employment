@@ -16,7 +16,7 @@
                         <p>" . $select[0]['totalJobs'] . "</p>
                     </div>
                     <div>
-                        <i class='bx bx-log-out'></i>
+                        <i class='bx bx-briefcase-alt'></i>
                     </div>
                 </div>
             ";
@@ -38,7 +38,7 @@
                         <p>" . $select[0]['totalEnroll'] . "</p>
                     </div>
                     <div>
-                        <i class='bx bx-log-out'></i>
+                        <i class='bx bx-directions'></i>
                     </div>
                 </div>
             ";
@@ -60,7 +60,7 @@
                         <p>" . $select[0]['totalEnroll'] . "</p>
                     </div>
                     <div>
-                        <i class='bx bx-log-out'></i>
+                        <i class='bx bx-loader'></i>
                     </div>
                 </div>
             ";
@@ -82,7 +82,7 @@
                         <p>" . $select[0]['totalEnroll'] . "</p>
                     </div>
                     <div>
-                        <i class='bx bx-log-out'></i>
+                        <i class='bx bx-location-plus'></i>
                     </div>
                 </div>
             ";
@@ -104,7 +104,7 @@
                         <p>" . $select[0]['totalEnroll'] . "</p>
                     </div>
                     <div>
-                        <i class='bx bx-log-out'></i>
+                        <i class='bx bx-briefcase'></i>
                     </div>
                 </div>
             ";
