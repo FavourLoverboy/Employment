@@ -1,6 +1,6 @@
 <?php 
     include('includes/auth/header.php');
-    echo "<title>Login | Admin - Nack </title>";
+    echo "<title>Forgot Password | $siteName</title>";
 
     $errEmail = $text_success = $e = '';
     $validate_email = true;

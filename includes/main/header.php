@@ -1,6 +1,7 @@
 <?php
     include('config/DB.php');
     include('config/security.php');
+    include('includes/setting.php');
     $dbObj = new DB();
     $secObj = new Security();
 ?>

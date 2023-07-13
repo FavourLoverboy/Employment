@@ -1,7 +1,7 @@
 <?php
 
     include('includes/auth/header.php');
-    echo "<title>Registration | No </title>";
+    echo "<title>Registration | $siteName</title>";
 
     if(!isset($_SESSION['nationality']) || $_SESSION['nationality'] == "" || $_SESSION['soo'] == "" || $_SESSION['country'] == "" || $_SESSION['state'] == "" || $_SESSION['city'] == "" || $_SESSION['ads'] == ""){
         echo "<script>  window.location='location' </script>";

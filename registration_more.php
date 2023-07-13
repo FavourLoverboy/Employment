@@ -1,6 +1,6 @@
 <?php 
     include('includes/auth/header.php');
-    echo "<title>Registration | No </title>";
+    echo "<title>Registration | $siteName</title>";
 
     if(!isset($_SESSION['fn']) || $_SESSION['fn'] == "" || $_SESSION['ln'] == "" || $_SESSION['email'] == "" || $_SESSION['password'] == ""){
         echo "<script>  window.location='registration_personal' </script>";

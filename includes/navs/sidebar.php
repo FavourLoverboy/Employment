@@ -25,7 +25,7 @@
             </span>
 
             <div class="text header-text">
-                <span class="name">Nack</span>
+                <span class="name"><?php echo $siteName; ?></span>
                 <span class="profrssion">
                     <?php 
                     

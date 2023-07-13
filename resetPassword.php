@@ -1,6 +1,6 @@
 <?php 
     include('includes/auth/header.php');
-    echo "<title>Login | Admin - Nack </title>";
+    echo "<title>Reset Password | $siteName</title>";
 
     $errNP = $errCP = '';
     $_GET['q'] = "Ng%3D%3D";

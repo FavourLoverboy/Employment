@@ -1,6 +1,6 @@
 <?php 
     include('includes/auth/header.php');
-    echo "<title>Registration | No </title>";
+    echo "<title>Registration | $siteName</title>";
 
     $errFN = $errLN = $errMN = $errEmail = $errPassword = $errCP = $ln = $fn = $mn = $email = $password = $cp = '';
     $validate_email = true;
